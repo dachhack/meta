@@ -19,6 +19,8 @@ Produce a standup report across every tracked project, then update
    - Read `<path>/STATUS.md` if present, for blockers and next tasks. If it
      is missing, note that — don't substitute HANDOFF.md, which is in-repo
      WIP, not orchestrator status.
+   - If STATUS.md's Goal / Phase / Cadence differ from the projects.md row,
+     STATUS.md wins — carry the new values into the projects.md update below.
 4. Compute days idle = today − last commit date.
 
 ## Output
@@ -35,5 +37,6 @@ Produce a standup report across every tracked project, then update
 ## Update projects.md
 
 Rewrite the "Last touched" column in `projects.md` with each project's actual
-last commit date found above. This file edit (inside this repo) is the only
-write this command performs.
+last commit date found above, and sync the Goal / Phase / Cadence columns
+from each project's STATUS.md when they differ. This file edit (inside this
+repo) is the only write this command performs.
